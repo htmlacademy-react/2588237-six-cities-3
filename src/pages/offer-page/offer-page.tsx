@@ -44,7 +44,7 @@ function OfferPage(): JSX.Element {
               <Price />
 
               <div className="offer__inside">
-                <h2 className="offer__inside-title">What's inside</h2>
+                <h2 className="offer__inside-title">What&apos;s inside</h2>
 
                 <AmenityList />
               </div>
