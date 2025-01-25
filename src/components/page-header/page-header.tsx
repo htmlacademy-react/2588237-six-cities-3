@@ -1,6 +1,10 @@
 import UserNav from '../user-nav/user-nav';
 
-function PageHeader(): JSX.Element {
+type PageHeaderProps = {
+  isAuth: boolean;
+}
+
+function PageHeader({isAuth}: PageHeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -11,7 +15,7 @@ function PageHeader(): JSX.Element {
             </a>
           </div>
 
-          <UserNav />
+          {isAuth && <UserNav />}
         </div>
       </div>
     </header>
