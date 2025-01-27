@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../components/page-header/page-header';
 
 function NotFoundPage(): JSX.Element {
@@ -5,6 +6,10 @@ function NotFoundPage(): JSX.Element {
 
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>Страница не найдена</title>
+      </Helmet>
+
       {<PageHeader isAuth={isAuth} />}
 
       <main className="page__main page__main--index">
