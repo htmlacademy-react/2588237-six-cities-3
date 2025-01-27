@@ -1,3 +1,4 @@
+import Logo from '../logo/logo';
 import UserNav from '../user-nav/user-nav';
 
 type PageHeaderProps = {
@@ -10,7 +11,7 @@ function PageHeader({isAuth}: PageHeaderProps): JSX.Element {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-
+            <Logo />
           </div>
 
           {isAuth && <UserNav />}
