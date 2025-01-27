@@ -8,8 +8,10 @@ function NotFoundPage(): JSX.Element {
       {<PageHeader isAuth={isAuth} />}
 
       <main className="page__main page__main--index">
-        <h1>404. Page not found</h1>
-        <a href="/">Вернуться на главную</a>
+        <div style={{margin: '10% auto', textAlign: 'center'}}>
+          <h1>404. Page not found</h1>
+          <a href="/">Вернуться на главную</a>
+        </div>
       </main>
     </div>
   );
