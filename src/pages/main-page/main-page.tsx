@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
-import Card from '../../components/card/card';
 import Filters from '../../components/filters/filters';
 import PageHeader from '../../components/page-header/page-header';
 import Sort from '../../components/sort/sort';
 import { Offers } from '../../types/offer';
+import OffersList from '../../components/offers-list/offers-list';
 
 type MainPageProps = {
   placesCount: number;
@@ -34,11 +34,9 @@ function MainPage({placesCount, offers}: MainPageProps): JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{placesCount} places to stay in Amsterdam</b>
 
-              {<Sort />}
+              <Sort />
 
-              <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => <Card key={offer.id} offer={offer} />)}
-              </div>
+              <OffersList offers={offers} />
             </section>
 
             <div className="cities__right-section">
