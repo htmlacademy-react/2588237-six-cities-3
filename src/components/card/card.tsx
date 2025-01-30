@@ -1,28 +1,60 @@
+import { CardType } from '../../const';
 import { Offer } from '../../types/offer';
 import { getRating } from './utils';
 
 type CardProps = {
   offer: Offer;
+  cardType: string;
 }
 
-function Card({offer}: CardProps): JSX.Element {
+const getCardSettings = (cardType: string) => {
+  let cardClassName = '';
+  let imageWrapperClassName = '';
+  let cardInfoClassName = '';
+
+  let imgWidth = 260;
+  let imgHeight = 200;
+
+  switch(cardType) {
+    case CardType.Offer:
+      cardClassName = 'cities__card';
+      imageWrapperClassName = 'cities__image-wrapper';
+
+      break;
+    case CardType.Favorite:
+      cardClassName = 'favorites__card';
+      imageWrapperClassName = 'favorites__image-wrapper';
+      cardInfoClassName = 'favorites__card-info';
+
+      imgWidth = 150;
+      imgHeight = 110;
+
+      break;
+  }
+
+  return {cardClassName, imageWrapperClassName, cardInfoClassName, imgWidth, imgHeight};
+};
+
+function Card({offer, cardType}: CardProps): JSX.Element {
   const {price, type, previewImage, rating, title, isFavorite, isPremium} = offer;
 
   const activeFavoriteButtonClass = isFavorite ? 'place-card__bookmark-button--active' : '';
 
+  const {cardClassName, imageWrapperClassName, cardInfoClassName, imgWidth, imgHeight} = getCardSettings(cardType);
+
   return (
-    <article className="cities__card place-card">
+    <article className={`${cardClassName} place-card`}>
       {isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
       </div>}
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${imageWrapperClassName} place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={imgWidth} height={imgHeight} alt="Place image" />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${cardInfoClassName} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price}</b>

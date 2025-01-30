@@ -6,7 +6,7 @@ export const offers = [
     'price': 361,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Cologne',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -88,6 +88,52 @@ export const offers = [
       'zoom': 16
     },
     'isFavorite': false,
+    'isPremium': false,
+    'rating': 2.7
+  },
+  {
+    'id': '68a78ba3-b163-4a1c-bd89-22237623278ab1b7',
+    'title': 'Canal View Prinsengracht',
+    'type': 'room',
+    'price': 218,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.85761,
+      'longitude': 2.358499,
+      'zoom': 16
+    },
+    'isFavorite': true,
+    'isPremium': false,
+    'rating': 2.7
+  },
+  {
+    'id': '68a78ba3-b163-4a1c-bd89-7623278ab1bsds7',
+    'title': 'Canal View Prinsengracht',
+    'type': 'room',
+    'price': 218,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.85761,
+      'longitude': 2.358499,
+      'zoom': 16
+    },
+    'isFavorite': true,
     'isPremium': false,
     'rating': 2.7
   }
