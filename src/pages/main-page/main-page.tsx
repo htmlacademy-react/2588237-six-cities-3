@@ -3,12 +3,14 @@ import Card from '../../components/card/card';
 import Filters from '../../components/filters/filters';
 import PageHeader from '../../components/page-header/page-header';
 import Sort from '../../components/sort/sort';
+import { Offers } from '../../types/offer';
 
 type MainPageProps = {
   placesCount: number;
+  offers: Offers;
 }
 
-function MainPage({placesCount}: MainPageProps): JSX.Element {
+function MainPage({placesCount, offers}: MainPageProps): JSX.Element {
   const isAuth = true;
 
   return (
@@ -35,7 +37,7 @@ function MainPage({placesCount}: MainPageProps): JSX.Element {
               {<Sort />}
 
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: 5}, (_, key) => <Card key={key}/>)}
+                {offers.map((offer) => <Card key={offer.id} offer={offer} />)}
               </div>
             </section>
 
