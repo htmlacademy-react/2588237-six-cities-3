@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import AmenityList from '../../components/amenity-list/amenity-list';
 import Features from '../../components/features/features';
 import Gallery from '../../components/gallery/gallery';
@@ -12,9 +13,14 @@ function OfferPage(): JSX.Element {
 
   return (
     <div className="page">
+      <Helmet>
+        <title>Информация о товаре</title>
+      </Helmet>
+
       <PageHeader isAuth={isAuth} />
 
       <main className="page__main page__main--offer">
+
         <section className="offer">
           <div className="offer__gallery-container container">
             <Gallery />
