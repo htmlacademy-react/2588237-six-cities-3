@@ -3,6 +3,7 @@ import PageHeader from '../../components/page-header/page-header';
 import { Offers } from '../../types/offer';
 import { filterFavorites } from './utils';
 import FavoriteItem from '../../components/favorite-item/favorite-item';
+import PageFooter from '../../components/page-footer/page-footer';
 
 type FavoritesPageProps = {
   offers: Offers;
@@ -32,17 +33,8 @@ function FavoritesPage({offers}: FavoritesPageProps): JSX.Element {
           </section>
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img
-            className="footer__logo"
-            src="img/logo.svg"
-            alt="6 cities logo"
-            width={64}
-            height={33}
-          />
-        </a>
-      </footer>
+
+      <PageFooter />
     </div>
 
   );
