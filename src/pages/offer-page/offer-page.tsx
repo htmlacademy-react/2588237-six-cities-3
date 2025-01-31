@@ -8,19 +8,22 @@ import Rating from '../../components/rating/rating';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import { useLocation } from 'react-router-dom';
-import { Offer, Offers } from '../../types/offer';
+import { FullOffer, FullOffers, Offer, Offers } from '../../types/offer';
 import OfferCard from '../../components/offer-card/offer-card';
 
 type OfferPageProps = {
   offers: Offers;
+  fullOffers: FullOffers;
 }
 
-function OfferPage({offers}: OfferPageProps): JSX.Element {
+function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
   const isAuth = true;
   const {pathname} = useLocation();
 
   const urlId = pathname.replace('/offer/', '');
-  const [offer] = offers.filter((item) => urlId === item.id);
+
+  const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
+  const {images} = fullOffer;
 
   return (
     <div className="page">
@@ -34,7 +37,7 @@ function OfferPage({offers}: OfferPageProps): JSX.Element {
 
         <section className="offer">
           <div className="offer__gallery-container container">
-            <Gallery />
+            <Gallery images={images} />
           </div>
 
           <div className="offer__container container">
