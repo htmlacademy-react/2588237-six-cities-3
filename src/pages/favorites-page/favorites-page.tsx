@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../components/page-header/page-header';
 import { Offers } from '../../types/offer';
-import FavoriteCard from '../../components/favorite-card/favorite-card';
+import { filterFavorites } from './utils';
+import FavoriteItem from '../../components/favorite-item/favorite-item';
 
 type FavoritesPageProps = {
   offers: Offers;
@@ -9,6 +10,8 @@ type FavoritesPageProps = {
 
 function FavoritesPage({offers}: FavoritesPageProps): JSX.Element {
   const isAuth = true;
+
+  const filtered = filterFavorites(offers);
 
   return (
     <div className="page">
@@ -22,31 +25,9 @@ function FavoritesPage({offers}: FavoritesPageProps): JSX.Element {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
+
             <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.filter((offer) => offer.isFavorite && offer.city.name === 'Amsterdam').map((offer) => <FavoriteCard key={offer.id} offer={offer} />)}
-                </div>
-              </li>
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.filter((offer) => offer.isFavorite && offer.city.name === 'Cologne').map((offer) => <FavoriteCard key={offer.id} offer={offer} />)}
-                </div>
-              </li>
+              {Object.entries(filtered).map((offer) => <FavoriteItem key={`city-${offer[0]}`} offer={offer} />)}
             </ul>
           </section>
         </div>

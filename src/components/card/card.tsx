@@ -1,4 +1,5 @@
-import { CardType } from '../../const';
+import { Link } from 'react-router-dom';
+import { AppRoute, CardType } from '../../const';
 import { Offer } from '../../types/offer';
 import { getRating } from './utils';
 
@@ -36,7 +37,7 @@ const getCardSettings = (cardType: string) => {
 };
 
 function Card({offer, cardType}: CardProps): JSX.Element {
-  const {price, type, previewImage, rating, title, isFavorite, isPremium} = offer;
+  const {id, price, type, previewImage, rating, title, isFavorite, isPremium} = offer;
 
   const activeFavoriteButtonClass = isFavorite ? 'place-card__bookmark-button--active' : '';
 
@@ -77,7 +78,7 @@ function Card({offer, cardType}: CardProps): JSX.Element {
         </div>
 
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={AppRoute.Offer.replace(':id', id)}>{title}</Link>
         </h2>
 
         <p className="place-card__type">{type}</p>
