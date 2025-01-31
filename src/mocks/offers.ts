@@ -1,12 +1,12 @@
 export const offers = [
   {
-    'id': '676ade8e-ff6f-4ba9-a08a-93a2ba141c27',
-    'title': 'Wood and stone place',
+    'id': '76ce36df-c6a5-46a4-b423-16c5f151de02',
+    'title': 'The Joshua Tree House',
     'type': 'apartment',
-    'price': 361,
-    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
+    'price': 292,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
     'city': {
-      'name': 'Cologne',
+      'name': 'Paris',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -18,16 +18,16 @@ export const offers = [
       'longitude': 2.342499,
       'zoom': 16
     },
-    'isFavorite': true,
-    'isPremium': false,
-    'rating': 2
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 1.3
   },
   {
-    'id': '683b25de-00f0-4037-a565-b1e418dd3e56',
-    'title': 'The Joshua Tree House',
-    'type': 'house',
-    'price': 117,
-    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/12.jpg',
+    'id': 'a6d424f0-ead6-49c0-ac53-0d2455bd1b5d',
+    'title': 'Tile House',
+    'type': 'hotel',
+    'price': 154,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
     'city': {
       'name': 'Paris',
       'location': {
@@ -42,15 +42,15 @@ export const offers = [
       'zoom': 16
     },
     'isFavorite': false,
-    'isPremium': true,
-    'rating': 4.5
+    'isPremium': false,
+    'rating': 2.9
   },
   {
-    'id': '7558b96a-7887-4b35-b94e-2b689e51b46e',
-    'title': 'Loft Studio in the Central Area',
-    'type': 'apartment',
-    'price': 164,
-    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
+    'id': '7c0f91b4-db52-4fc7-b8c4-99ee840d967b',
+    'title': 'Waterfront with extraordinary view',
+    'type': 'room',
+    'price': 144,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
     'city': {
       'name': 'Paris',
       'location': {
@@ -64,16 +64,16 @@ export const offers = [
       'longitude': 2.335499,
       'zoom': 16
     },
-    'isFavorite': true,
+    'isFavorite': false,
     'isPremium': false,
-    'rating': 1.1
+    'rating': 4.9
   },
   {
-    'id': '68a78ba3-b163-4a1c-bd89-7623278ab1b7',
-    'title': 'Canal View Prinsengracht',
+    'id': '4f673d62-6f11-49e3-87ed-5d3381765090',
+    'title': 'Nice, cozy, warm big bed apartment',
     'type': 'room',
-    'price': 218,
-    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
+    'price': 115,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
     'city': {
       'name': 'Paris',
       'location': {
@@ -87,26 +87,26 @@ export const offers = [
       'longitude': 2.358499,
       'zoom': 16
     },
-    'isFavorite': true,
-    'isPremium': false,
-    'rating': 2.7
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 4.8
   }
 ];
 
 export const fullOffers = [
   {
-    'id': '676ade8e-ff6f-4ba9-a08a-93a2ba141c27',
-    'title': 'Wood and stone place',
+    'id': '76ce36df-c6a5-46a4-b423-16c5f151de02',
+    'title': 'The Joshua Tree House',
     'description': 'Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.',
     'type': 'apartment',
-    'price': 361,
+    'price': 292,
     'images': [
-      'https://15.design.htmlacademy.pro/static/hotel/6.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/11.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/3.jpg',
       'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/15.jpg'
+      'https://15.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/4.jpg'
     ],
     'city': {
       'name': 'Paris',
@@ -122,16 +122,113 @@ export const fullOffers = [
       'zoom': 16
     },
     'goods': [
+      'Baby seat',
       'Wi-Fi',
-      'Towels',
-      'Laptop friendly workspace',
-      'Dishwasher',
-      'Breakfast',
-      'Cable TV',
+      'Fridge'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': true,
+    'isFavorite': false,
+    'rating': 1.3,
+    'bedrooms': 4,
+    'maxAdults': 10
+  },
+  {
+    'id': 'a6d424f0-ead6-49c0-ac53-0d2455bd1b5d',
+    'title': 'Tile House',
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'type': 'hotel',
+    'price': 154,
+    'images': [
+      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/11.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/8.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.858610000000006,
+      'longitude': 2.330499,
+      'zoom': 16
+    },
+    'goods': [
+      'Fridge',
+      'Coffee machine',
       'Heating',
+      'Laptop friendly workspace',
+      'Baby seat',
+      'Air conditioning',
+      'Towels',
+      'Cable TV',
+      'Kitchen',
       'Washing machine',
       'Washer',
+      'Dishwasher',
+      'Wi-Fi'
+    ],
+    'host': {
+      'isPro': true,
+      'name': 'Angelina',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+    },
+    'isPremium': false,
+    'isFavorite': false,
+    'rating': 2.9,
+    'bedrooms': 1,
+    'maxAdults': 6
+  },
+  {
+    'id': '7c0f91b4-db52-4fc7-b8c4-99ee840d967b',
+    'title': 'Waterfront with extraordinary view',
+    'description': 'Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.',
+    'type': 'room',
+    'price': 144,
+    'images': [
+      'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/8.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/1.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/12.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/3.jpg'
+    ],
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.834610000000005,
+      'longitude': 2.335499,
+      'zoom': 16
+    },
+    'goods': [
+      'Washing machine',
+      'Heating',
+      'Kitchen',
+      'Dishwasher',
       'Air conditioning',
+      'Laptop friendly workspace',
+      'Coffee machine',
+      'Towels',
+      'Cable TV',
+      'Wi-Fi',
+      'Washer',
       'Fridge',
       'Baby seat'
     ],
@@ -142,125 +239,23 @@ export const fullOffers = [
     },
     'isPremium': false,
     'isFavorite': false,
-    'rating': 2,
-    'bedrooms': 4,
-    'maxAdults': 8
-  },
-  {
-    'id': '683b25de-00f0-4037-a565-b1e418dd3e56',
-    'title': 'The Joshua Tree House',
-    'description': 'Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.',
-    'type': 'house',
-    'price': 117,
-    'images': [
-      'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/6.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/18.jpg'
-    ],
-    'city': {
-      'name': 'Paris',
-      'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 48.858610000000006,
-      'longitude': 2.330499,
-      'zoom': 16
-    },
-    'goods': [
-      'Cable TV',
-      'Washer',
-      'Washing machine',
-      'Laptop friendly workspace',
-      'Air conditioning',
-      'Towels',
-      'Baby seat',
-      'Kitchen',
-      'Coffee machine',
-      'Heating'
-    ],
-    'host': {
-      'isPro': true,
-      'name': 'Angelina',
-      'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
-    },
-    'isPremium': true,
-    'isFavorite': false,
-    'rating': 4.5,
-    'bedrooms': 5,
+    'rating': 4.9,
+    'bedrooms': 1,
     'maxAdults': 2
   },
   {
-    'id': '7558b96a-7887-4b35-b94e-2b689e51b46e',
-    'title': 'Loft Studio in the Central Area',
-    'description': 'Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.',
-    'type': 'apartment',
-    'price': 164,
+    'id': '4f673d62-6f11-49e3-87ed-5d3381765090',
+    'title': 'Nice, cozy, warm big bed apartment',
+    'description': 'This is a place for dreamers to reset, reflect, and create. Designed with a \'slow\' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.',
+    'type': 'room',
+    'price': 115,
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/12.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/3.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/17.jpg'
-    ],
-    'city': {
-      'name': 'Paris',
-      'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 48.834610000000005,
-      'longitude': 2.335499,
-      'zoom': 16
-    },
-    'goods': [
-      'Dishwasher',
-      'Fridge',
-      'Baby seat',
-      'Heating',
-      'Kitchen',
-      'Washer',
-      'Laptop friendly workspace',
-      'Washing machine',
-      'Wi-Fi',
-      'Towels',
-      'Cable TV',
-      'Breakfast'
-    ],
-    'host': {
-      'isPro': true,
-      'name': 'Angelina',
-      'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
-    },
-    'isPremium': false,
-    'isFavorite': false,
-    'rating': 1.1,
-    'bedrooms': 3,
-    'maxAdults': 1
-  },
-  {
-    'id': '68a78ba3-b163-4a1c-bd89-7623278ab1b7',
-    'title': 'Canal View Prinsengracht',
-    'description': 'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
-    'type': 'room',
-    'price': 218,
-    'images': [
-      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/8.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
       'https://15.design.htmlacademy.pro/static/hotel/1.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
-      'https://15.design.htmlacademy.pro/static/hotel/2.jpg'
+      'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/10.jpg'
     ],
     'city': {
       'name': 'Paris',
@@ -276,23 +271,26 @@ export const fullOffers = [
       'zoom': 16
     },
     'goods': [
-      'Kitchen',
+      'Cable TV',
+      'Washing machine',
+      'Coffee machine',
+      'Air conditioning',
+      'Breakfast',
+      'Washer',
       'Heating',
-      'Baby seat',
-      'Wi-Fi',
       'Laptop friendly workspace',
-      'Dishwasher',
-      'Fridge'
+      'Towels',
+      'Kitchen'
     ],
     'host': {
       'isPro': true,
       'name': 'Angelina',
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
     },
-    'isPremium': false,
+    'isPremium': true,
     'isFavorite': false,
-    'rating': 2.7,
+    'rating': 4.8,
     'bedrooms': 1,
-    'maxAdults': 1
+    'maxAdults': 2
   }
 ];
