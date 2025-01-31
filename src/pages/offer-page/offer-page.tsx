@@ -8,8 +8,9 @@ import Rating from '../../components/rating/rating';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import { useLocation } from 'react-router-dom';
-import { FullOffer, FullOffers, Offer, Offers } from '../../types/offer';
+import { FullOffers, Offers } from '../../types/offer';
 import OfferCard from '../../components/offer-card/offer-card';
+import HostUser from '../../components/host-user/host-user';
 
 type OfferPageProps = {
   offers: Offers;
@@ -23,7 +24,9 @@ function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
   const urlId = pathname.replace('/offer/', '');
 
   const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
-  const {images} = fullOffer;
+  const {images, title, isPremium, isFavorite, description, type, bedrooms, maxAdults, price, goods, host, rating} = fullOffer;
+
+  const activeFavoriteButtonClass = isFavorite ? 'offer__bookmark-button--active' : '';
 
   return (
     <div className="page">
@@ -42,54 +45,43 @@ function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
 
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              {isPremium &&
+                <div className="offer__mark">
+                  <span>Premium</span>
+                </div>}
+
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">
-              Beautiful &amp; luxurious studio at great location
-                </h1>
-                <button className="offer__bookmark-button button" type="button">
+                <h1 className="offer__name">{title}</h1>
+
+                <button className={`offer__bookmark-button ${activeFavoriteButtonClass} button`} type="button">
                   <svg className="offer__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
+
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
 
-              <Rating />
+              <Rating rating={rating} />
 
-              <Features />
+              <Features features={{type, bedrooms, maxAdults}} />
 
-              <Price />
+              <Price price={price} />
 
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
 
-                <AmenityList />
+                <AmenityList goods={goods} />
               </div>
 
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
 
-                <div className="offer__host-user user">
-                  <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width={74} height={74} alt="Host avatar" />
-                  </div>
-                  <span className="offer__user-name">
-                Angelina
-                  </span>
-                  <span className="offer__user-status">
-                Pro
-                  </span>
-                </div>
+                <HostUser user={host} />
 
                 <div className="offer__description">
                   <p className="offer__text">
-                A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="offer__text">
-                An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    {description}
                   </p>
                 </div>
               </div>
@@ -111,6 +103,7 @@ function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
+
             <div className="near-places__list places__list">
               {offers.slice(0, 3).map((data) => <OfferCard key={data.id} offer={data} />)}
             </div>

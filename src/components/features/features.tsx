@@ -1,14 +1,27 @@
-function Features(): JSX.Element {
+type FeaturesProps = {
+  features: {
+    type: string;
+    bedrooms: number;
+    maxAdults: number;
+  };
+}
+
+function Features({features}: FeaturesProps): JSX.Element {
+  const {type: houseType, bedrooms, maxAdults} = features;
+
+  const bedroomTitle = bedrooms > 1 ? `${bedrooms} bedrooms` : `${bedrooms} bedroom`;
+  const adultsTitle = maxAdults > 1 ? `Max ${maxAdults} adults` : `Max ${maxAdults} adult`;
+
   return (
     <ul className="offer__features">
       <li className="offer__feature offer__feature--entire">
-    Apartment
+        {houseType}
       </li>
       <li className="offer__feature offer__feature--bedrooms">
-    3 Bedrooms
+        {bedroomTitle}
       </li>
       <li className="offer__feature offer__feature--adults">
-    Max 4 adults
+        {adultsTitle}
       </li>
     </ul>
   );

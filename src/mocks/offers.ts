@@ -18,7 +18,7 @@ export const offers = [
       'longitude': 2.342499,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 1.3
   },
@@ -132,7 +132,7 @@ export const fullOffers = [
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
     },
     'isPremium': true,
-    'isFavorite': false,
+    'isFavorite': true,
     'rating': 1.3,
     'bedrooms': 4,
     'maxAdults': 10
