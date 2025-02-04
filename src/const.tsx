@@ -1,3 +1,5 @@
+export const MAX_SHOW_REVIEWS = 10;
+
 export enum AppRoute {
   Root = '/',
   Login = '/login',
@@ -23,4 +25,9 @@ export enum City {
   Amsterdam = 'Amsterdam',
   Hamburg = 'Hamburg',
   Dusseldorf = 'Dusseldorf'
+}
+
+export enum SortType {
+  Down = 'down',
+  Up = 'up'
 }

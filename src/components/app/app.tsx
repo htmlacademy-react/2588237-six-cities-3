@@ -9,6 +9,7 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { Offers } from '../../types/offer';
 import { fullOffers } from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
 
 type AppProps = {
   placesCount: number;
@@ -35,7 +36,7 @@ function App({placesCount, offers}: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Offer} element={<OfferPage offers={offers} fullOffers={fullOffers} />} />
+          <Route path={AppRoute.Offer} element={<OfferPage offers={offers} fullOffers={fullOffers} reviews={reviews} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

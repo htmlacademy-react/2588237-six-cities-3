@@ -11,20 +11,30 @@ import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
 import OfferCard from '../../components/offer-card/offer-card';
 import HostUser from '../../components/host-user/host-user';
+import { Reviews } from '../../types/review';
+import { MAX_SHOW_REVIEWS, SortType } from '../../const';
+import { getReviewsById, sortReviews } from '../../utils';
 
 type OfferPageProps = {
   offers: Offers;
   fullOffers: FullOffers;
+  reviews: Reviews;
 }
 
-function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
+function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
   const isAuth = true;
   const {pathname} = useLocation();
 
   const urlId = pathname.replace('/offer/', '');
 
+  /* OFFER DATA */
   const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
   const {images, title, isPremium, isFavorite, description, type, bedrooms, maxAdults, price, goods, host, rating} = fullOffer;
+
+  /* REVIEWS DATA */
+  const filteredReviews = sortReviews(getReviewsById(urlId, reviews), SortType.Down);
+
+  const isShowReviews = filteredReviews.length > 0;
 
   const activeFavoriteButtonClass = isFavorite ? 'offer__bookmark-button--active' : '';
 
@@ -87,11 +97,15 @@ function OfferPage({offers, fullOffers}: OfferPageProps): JSX.Element {
               </div>
 
               <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
-
-                <ul className="reviews__list">
-                  <ReviewsItem />
-                </ul>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{filteredReviews.length}</span></h2>
+                {
+                  isShowReviews &&
+                    <ul className="reviews__list">
+                      {filteredReviews
+                        .slice(0, MAX_SHOW_REVIEWS)
+                        .map((review) => <ReviewsItem key={`review-${review.id}`} review={review} />)}
+                    </ul>
+                }
 
                 <ReviewForm />
               </section>
