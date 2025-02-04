@@ -7,11 +7,10 @@ import PageFooter from '../../components/page-footer/page-footer';
 
 type FavoritesPageProps = {
   offers: Offers;
+  isAuth: boolean;
 }
 
-function FavoritesPage({offers}: FavoritesPageProps): JSX.Element {
-  const isAuth = true;
-
+function FavoritesPage({offers, isAuth}: FavoritesPageProps): JSX.Element {
   const filtered = filterFavorites(offers);
 
   return (

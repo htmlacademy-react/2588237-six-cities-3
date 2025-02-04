@@ -17,27 +17,29 @@ type AppProps = {
 }
 
 function App({placesCount, offers}: AppProps): JSX.Element {
+  const authorizationStatus = AuthorizationStatus.Auth;
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path="/"
-            element={<MainPage placesCount={placesCount} offers={offers} />}
+            element={<MainPage placesCount={placesCount} offers={offers} isAuth={authorizationStatus === AuthorizationStatus.Auth} />}
           />
-          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route path={AppRoute.Login} element={<LoginPage isAuth={false} />} />
           <Route
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
+                authorizationStatus={authorizationStatus}
               >
-                <FavoritesPage offers={offers} />
+                <FavoritesPage offers={offers} isAuth={authorizationStatus === AuthorizationStatus.Auth} />
               </PrivateRoute>
             }
           />
           <Route path={AppRoute.Offer} element={<OfferPage offers={offers} fullOffers={fullOffers} reviews={reviews} />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage isAuth={authorizationStatus === AuthorizationStatus.Auth} />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

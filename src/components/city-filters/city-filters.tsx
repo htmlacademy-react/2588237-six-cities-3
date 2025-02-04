@@ -1,4 +1,4 @@
-function Filters(): JSX.Element {
+function CityFilters(): JSX.Element {
   return (
     <section className="locations container">
       <ul className="locations__list tabs__list">
@@ -37,4 +37,4 @@ function Filters(): JSX.Element {
   );
 }
 
-export default Filters;
+export default CityFilters;

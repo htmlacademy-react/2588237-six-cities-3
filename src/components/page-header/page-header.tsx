@@ -1,5 +1,5 @@
 import Logo from '../logo/logo';
-import UserNav from '../user-nav/user-nav';
+import UserProfile from '../user-profile/user-profile';
 
 type PageHeaderProps = {
   isAuth: boolean;
@@ -14,7 +14,7 @@ function PageHeader({isAuth}: PageHeaderProps): JSX.Element {
             <Logo />
           </div>
 
-          {isAuth && <UserNav />}
+          {isAuth && <UserProfile />}
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Filters from '../../components/filters/filters';
+import CityFilters from '../../components/city-filters/city-filters';
 import PageHeader from '../../components/page-header/page-header';
 import Sort from '../../components/sort/sort';
 import { Offers } from '../../types/offer';
@@ -8,11 +8,10 @@ import OffersList from '../../components/offers-list/offers-list';
 type MainPageProps = {
   placesCount: number;
   offers: Offers;
+  isAuth: boolean;
 }
 
-function MainPage({placesCount, offers}: MainPageProps): JSX.Element {
-  const isAuth = true;
-
+function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -25,7 +24,7 @@ function MainPage({placesCount, offers}: MainPageProps): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
 
         <div className="tabs">
-          {<Filters />}
+          {<CityFilters />}
         </div>
 
         <div className="cities">

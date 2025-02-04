@@ -1,9 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../components/page-header/page-header';
 
-function LoginPage(): JSX.Element {
-  const isAuth = false;
+type LoginPageProps = {
+  isAuth: boolean;
+}
 
+function LoginPage({isAuth}: LoginPageProps): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <Helmet>
