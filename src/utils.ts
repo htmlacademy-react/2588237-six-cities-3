@@ -32,12 +32,14 @@ export const sortReviews = (reviews: Reviews, sortType: SortType): Reviews => {
   }
 };
 
-export const getReviewsById = (id: string, reviews: {[key: string]: AllMockReviews}) => {
+export const getReviewsById = (id: string, reviews: AllMockReviews): Reviews | [] => {
   for (let i = 0; i <= reviews.length; i++) {
     if (reviews[i].id === id) {
       return reviews[i].data;
     }
   }
+
+  return [];
 };
 
 export const humanizeDate = (date: string): string => dayjs(date).format('MMMM YYYY');

@@ -19,7 +19,7 @@ function ReviewForm(): JSX.Element {
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value as string,
     });
   };
 
@@ -29,7 +29,7 @@ function ReviewForm(): JSX.Element {
     const {name, value} = evt.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value as number,
     });
   };
 

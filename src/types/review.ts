@@ -12,8 +12,8 @@ export type Review = {
 
 export type MockReview = {
   id: string;
-  date: Review[];
+  data: Review[] | [];
 }
 
 export type Reviews = Review[];
-export type AllMockReviews = MockReview[];
+export type AllMockReviews = MockReview[] | [];
