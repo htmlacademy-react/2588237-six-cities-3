@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import ReviewRating from '../review-rating/review-rating';
 
 function ReviewForm(): JSX.Element {
@@ -12,24 +12,24 @@ function ReviewForm(): JSX.Element {
 
   const isDisabled = formData.review.length < MIN_COMMENT_LENGTH || formData.review.length > MAX_COMMENT_LENGTH;
 
-  const handleTextareaChange = (evt: FormEvent<HTMLTextAreaElement>) => {
+  const handleTextareaChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     evt.preventDefault();
 
     const {name, value} = evt.target;
 
     setFormData({
       ...formData,
-      [name]: value as string,
+      [name]: value,
     });
   };
 
-  const handleInputRatingChange = (evt: FormEvent<HTMLInputElement>) => {
+  const handleInputRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
 
     const {name, value} = evt.target;
     setFormData({
       ...formData,
-      [name]: value as number,
+      [name]: value,
     });
   };
 
@@ -45,9 +45,10 @@ function ReviewForm(): JSX.Element {
 
       <textarea
         className="reviews__textarea form__textarea"
-        id="review" name="review"
+        id="review"
+        name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={formData.review}
+        value={formData.review}
         onChange={handleTextareaChange}
       />
 
