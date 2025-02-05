@@ -20,7 +20,19 @@ export type Offer = {
   previewImage: string;
 }
 
-export type FullOffer = Offer & {
+export type FullOffer = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: {
+    name: string;
+    location: Location;
+  };
+  location: Location;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
   description: string;
   bedrooms: number;
   goods: string[];

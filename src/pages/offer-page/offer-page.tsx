@@ -11,14 +11,14 @@ import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
 import OfferCard from '../../components/offer-card/offer-card';
 import HostUser from '../../components/host-user/host-user';
-import { Reviews } from '../../types/review';
+import { AllMockReviews } from '../../types/review';
 import { MAX_SHOW_REVIEWS, SortType } from '../../const';
 import { getReviewsById, sortReviews } from '../../utils';
 
 type OfferPageProps = {
   offers: Offers;
   fullOffers: FullOffers;
-  reviews: Reviews;
+  reviews: AllMockReviews;
 }
 
 function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {

@@ -1,7 +1,7 @@
-import { FormEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 type ReviewRatingProps = {
-  onChange: (evt: FormEvent<HTMLInputElement>) => void;
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function ReviewRating({onChange}: ReviewRatingProps): JSX.Element {
