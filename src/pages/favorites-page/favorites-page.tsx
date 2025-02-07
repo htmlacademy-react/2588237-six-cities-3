@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../components/page-header/page-header';
 
 function FavoritesPage(): JSX.Element {
@@ -5,6 +6,10 @@ function FavoritesPage(): JSX.Element {
 
   return (
     <div className="page">
+      <Helmet>
+        <title>Избранные товары</title>
+      </Helmet>
+
       <PageHeader isAuth={isAuth} />
 
       <main className="page__main page__main--favorites">
