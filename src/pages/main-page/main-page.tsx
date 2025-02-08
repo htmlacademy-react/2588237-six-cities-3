@@ -2,8 +2,10 @@ import { Helmet } from 'react-helmet-async';
 import CityFilters from '../../components/city-filters/city-filters';
 import PageHeader from '../../components/page-header/page-header';
 import Sort from '../../components/sort/sort';
-import { Offers } from '../../types/offer';
+import { Offer, Offers } from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
+import { useState } from 'react';
+import MyMap from '../../components/my-map/my-map';
 
 type MainPageProps = {
   placesCount: number;
@@ -12,6 +14,16 @@ type MainPageProps = {
 }
 
 function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
+
+  const city = offers[0].city;
+
+  const handleListItemHover = (listItemName: string | undefined) => {
+    const currentPoint = offers.find((point: Offer) => point.id === listItemName);
+
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -35,11 +47,11 @@ function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
 
               <Sort />
 
-              <OffersList offers={offers} />
+              <OffersList offers={offers} onListItemHover={handleListItemHover} />
             </section>
 
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <MyMap city={city} points={offers} selectedPoint={selectedPoint} />
             </div>
           </div>
         </div>

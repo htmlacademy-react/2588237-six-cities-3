@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 import { AppRoute, CardType } from '../../const';
 import { Offer } from '../../types/offer';
 import { getRating } from '../../utils';
+import { MouseEvent } from 'react';
 
 type CardProps = {
   offer: Offer;
   cardType: string;
+  onListItemHover: (listItemName: string | undefined) => void;
 }
 
 const getCardSettings = (cardType: string) => {
@@ -36,15 +38,36 @@ const getCardSettings = (cardType: string) => {
   return {cardClassName, imageWrapperClassName, cardInfoClassName, imgWidth, imgHeight};
 };
 
-function Card({offer, cardType}: CardProps): JSX.Element {
+function Card({offer, cardType, onListItemHover}: CardProps): JSX.Element {
   const {id, price, type, previewImage, rating, title, isFavorite, isPremium} = offer;
 
   const activeFavoriteButtonClass = isFavorite ? 'place-card__bookmark-button--active' : '';
 
   const {cardClassName, imageWrapperClassName, cardInfoClassName, imgWidth, imgHeight} = getCardSettings(cardType);
 
+  const handleListItemHover = (evt: MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
+
+    const cardId = evt.currentTarget.dataset.pointId;
+
+    if (cardId) {
+      onListItemHover(cardId);
+    }
+  };
+
+  const handleListItemLeave = (evt: MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
+
+    onListItemHover(undefined);
+  };
+
   return (
-    <article className={`${cardClassName} place-card`}>
+    <article
+      className={`${cardClassName} place-card`}
+      onMouseEnter={handleListItemHover}
+      onMouseLeave={handleListItemLeave}
+      data-point-id={id}
+    >
       {isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
