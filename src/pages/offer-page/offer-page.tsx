@@ -1,22 +1,20 @@
 import { Helmet } from 'react-helmet-async';
-import AmenityList from '../../components/amenity-list/amenity-list';
 import Features from '../../components/features/features';
 import Gallery from '../../components/gallery/gallery';
 import PageHeader from '../../components/page-header/page-header';
 import Price from '../../components/price/price';
 import Rating from '../../components/rating/rating';
 import ReviewForm from '../../components/review-form/review-form';
-import ReviewsItem from '../../components/reviews-item/reviews-item';
 import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
 import HostUser from '../../components/host-user/host-user';
 import { AllMockReviews } from '../../types/review';
-import { MAX_SHOW_REVIEWS, Page, SortType } from '../../const';
+import { Page, SortType } from '../../const';
 import { getReviewsById, sortReviews } from '../../utils';
 import MyMap from '../../components/my-map/my-map';
-import NearCard from '../../components/near-card/near-card';
-import NearPlacesList from '../../components/near-places-list/near-places-list';
 import NearPlaces from '../../components/near-places/near-places';
+import OfferInside from '../../components/offer-inside/offer-inside';
+import ReviewsList from '../../components/reviews-list/reviews-list';
 
 type OfferPageProps = {
   offers: Offers;
@@ -54,9 +52,7 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
       <main className="page__main page__main--offer">
 
         <section className="offer">
-          <div className="offer__gallery-container container">
-            <Gallery images={images} />
-          </div>
+          <Gallery images={images} />
 
           <div className="offer__container container">
             <div className="offer__wrapper">
@@ -83,11 +79,7 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
 
               <Price price={price} />
 
-              <div className="offer__inside">
-                <h2 className="offer__inside-title">What&apos;s inside</h2>
-
-                <AmenityList goods={goods} />
-              </div>
+              <OfferInside goods={goods} />
 
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
@@ -102,15 +94,11 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
               </div>
 
               <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{filteredReviews.length}</span></h2>
-                {
-                  isShowReviews &&
-                    <ul className="reviews__list">
-                      {filteredReviews
-                        .slice(0, MAX_SHOW_REVIEWS)
-                        .map((review) => <ReviewsItem key={`review-${review.id}`} review={review} />)}
-                    </ul>
-                }
+                <h2 className="reviews__title">
+                  Reviews · <span className="reviews__amount">{filteredReviews.length}</span>
+                </h2>
+
+                {isShowReviews && <ReviewsList reviews={filteredReviews} />}
 
                 <ReviewForm />
               </section>
