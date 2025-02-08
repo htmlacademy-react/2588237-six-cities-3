@@ -9,11 +9,14 @@ import ReviewForm from '../../components/review-form/review-form';
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
-import OfferCard from '../../components/offer-card/offer-card';
 import HostUser from '../../components/host-user/host-user';
 import { AllMockReviews } from '../../types/review';
-import { MAX_SHOW_REVIEWS, SortType } from '../../const';
+import { MAX_SHOW_REVIEWS, Page, SortType } from '../../const';
 import { getReviewsById, sortReviews } from '../../utils';
+import MyMap from '../../components/my-map/my-map';
+import NearCard from '../../components/near-card/near-card';
+import NearPlacesList from '../../components/near-places-list/near-places-list';
+import NearPlaces from '../../components/near-places/near-places';
 
 type OfferPageProps = {
   offers: Offers;
@@ -30,6 +33,8 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
   /* OFFER DATA */
   const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
   const {images, title, isPremium, isFavorite, description, type, bedrooms, maxAdults, price, goods, host, rating} = fullOffer;
+
+  const city = fullOffer.city;
 
   /* REVIEWS DATA */
   const filteredReviews = sortReviews(getReviewsById(urlId, reviews), SortType.Down);
@@ -111,18 +116,11 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map" />
+
+          <MyMap city={city} points={offers} selectedPoint={fullOffer} page={Page.Offer} />
         </section>
 
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-
-            <div className="near-places__list places__list">
-              {offers.slice(0, 3).map((data) => <OfferCard key={data.id} offer={data} />)}
-            </div>
-          </section>
-        </div>
+        <NearPlaces offers={offers} />
       </main>
     </div>
   );

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { City, Offer, Offers } from '../../types/offer';
+import { City, FullOffer, Offer, Offers } from '../../types/offer';
 import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import useMap from '../../hooks/use-map';
-import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
+import { Page, URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 
 const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -20,14 +20,30 @@ const currentCustomIcon = leaflet.icon({
 type MapProps = {
   city: City;
   points: Offers;
-  selectedPoint: Offer | undefined;
+  selectedPoint: Offer | FullOffer | undefined;
+  page: Page;
 }
 
+const settings = {
+  [Page.Main]: {
+    classname: 'cities__map map',
+    width: '512px',
+    height: '100%',
+  },
+  [Page.Offer]: {
+    classname: 'offer__map map',
+    width: '1144px',
+    height: '579px',
+  },
+};
+
 function MyMap(props: MapProps): JSX.Element {
-  const {city, points, selectedPoint} = props;
+  const {city, points, selectedPoint, page} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+
+  const {classname: mapContainerClassName} = settings[page];
 
   useEffect(() => {
     if (map) {
@@ -45,7 +61,10 @@ function MyMap(props: MapProps): JSX.Element {
   }, [map, points, selectedPoint]);
 
   return (
-    <section className="cities__map map" ref={mapRef} />
+    <section
+      className={mapContainerClassName}
+      ref={mapRef}
+    />
   );
 }
 

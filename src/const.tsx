@@ -20,7 +20,8 @@ export enum AuthorizationStatus {
 
 export enum CardType {
   Favorite = 'favorites',
-  Offer = 'offer'
+  Offer = 'offer',
+  Near = 'near'
 }
 
 export enum City {
@@ -35,4 +36,9 @@ export enum City {
 export enum SortType {
   Down = 'down',
   Up = 'up'
+}
+
+export enum Page {
+  Main = 'Main',
+  Offer = 'Offer',
 }

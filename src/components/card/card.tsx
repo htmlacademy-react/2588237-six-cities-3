@@ -7,7 +7,7 @@ import { MouseEvent } from 'react';
 type CardProps = {
   offer: Offer;
   cardType: string;
-  onListItemHover: (listItemName: string | undefined) => void;
+  onListItemHover?: (listItemName: string | undefined) => void;
 }
 
 const getCardSettings = (cardType: string) => {
@@ -22,6 +22,11 @@ const getCardSettings = (cardType: string) => {
     case CardType.Offer:
       cardClassName = 'cities__card';
       imageWrapperClassName = 'cities__image-wrapper';
+
+      break;
+    case CardType.Near:
+      cardClassName = 'near-places__card';
+      imageWrapperClassName = 'near-places__image-wrapper';
 
       break;
     case CardType.Favorite:
@@ -50,7 +55,7 @@ function Card({offer, cardType, onListItemHover}: CardProps): JSX.Element {
 
     const cardId = evt.currentTarget.dataset.pointId;
 
-    if (cardId) {
+    if (cardId && onListItemHover) {
       onListItemHover(cardId);
     }
   };
@@ -58,7 +63,9 @@ function Card({offer, cardType, onListItemHover}: CardProps): JSX.Element {
   const handleListItemLeave = (evt: MouseEvent<HTMLElement>) => {
     evt.preventDefault();
 
-    onListItemHover(undefined);
+    if (onListItemHover) {
+      onListItemHover(undefined);
+    }
   };
 
   return (

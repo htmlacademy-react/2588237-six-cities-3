@@ -6,6 +6,7 @@ import { Offer, Offers } from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import { useState } from 'react';
 import MyMap from '../../components/my-map/my-map';
+import { Page } from '../../const';
 
 type MainPageProps = {
   placesCount: number;
@@ -51,7 +52,7 @@ function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
             </section>
 
             <div className="cities__right-section">
-              <MyMap city={city} points={offers} selectedPoint={selectedPoint} />
+              <MyMap city={city} points={offers} selectedPoint={selectedPoint} page={Page.Main} />
             </div>
           </div>
         </div>
