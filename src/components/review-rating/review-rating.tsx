@@ -1,42 +1,33 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Fragment } from 'react';
 
 type ReviewRatingProps = {
   onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
+const settings = [
+  {value: 5, label: 'perfect'},
+  {value: 4, label: 'good'},
+  {value: 3, label: 'not bad'},
+  {value: 2, label: 'badly'},
+  {value: 1, label: 'terribly'},
+];
 
 function ReviewRating({onChange}: ReviewRatingProps): JSX.Element {
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    onChange(evt);
+  };
+
   return (
     <div className="reviews__rating-form form__rating">
-      <input onChange={onChange} className="form__rating-input visually-hidden" name="rating" defaultValue={5} id="5-stars" type="radio" />
-      <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-        <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
-        </svg>
-      </label>
-      <input onChange={onChange} className="form__rating-input visually-hidden" name="rating" defaultValue={4} id="4-stars" type="radio" />
-      <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-        <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
-        </svg>
-      </label>
-      <input onChange={onChange} className="form__rating-input visually-hidden" name="rating" defaultValue={3} id="3-stars" type="radio" />
-      <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-        <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
-        </svg>
-      </label>
-      <input onChange={onChange} className="form__rating-input visually-hidden" name="rating" defaultValue={2} id="2-stars" type="radio" />
-      <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-        <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
-        </svg>
-      </label>
-      <input onChange={onChange} className="form__rating-input visually-hidden" name="rating" defaultValue={1} id="1-star" type="radio" />
-      <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-        <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
-        </svg>
-      </label>
+      {settings.map(({value, label}) => (
+        <Fragment key={`rating-${value}`} >
+          <input onChange={handleChange} className="form__rating-input visually-hidden" name="rating" defaultValue={value} id={`${value}-stars`} type="radio" />
+          <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={label}>
+            <svg className="form__star-image" width={37} height={33}>
+              <use xlinkHref="#icon-star" />
+            </svg>
+          </label>
+        </Fragment>
+      ))}
     </div>
   );
 }
