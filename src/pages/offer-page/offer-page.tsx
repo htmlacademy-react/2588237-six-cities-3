@@ -20,10 +20,10 @@ type OfferPageProps = {
   offers: Offers;
   fullOffers: FullOffers;
   reviews: AllMockReviews;
+  isAuth: boolean;
 }
 
-function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
-  const isAuth = true;
+function OfferPage({offers, fullOffers, reviews, isAuth}: OfferPageProps): JSX.Element {
   const {pathname} = useLocation();
 
   const urlId = pathname.replace('/offer/', '');

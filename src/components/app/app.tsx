@@ -49,6 +49,7 @@ function App({placesCount, offers}: AppProps): JSX.Element {
               offers={offers}
               fullOffers={fullOffers}
               reviews={reviews}
+              isAuth={authorizationStatus === AuthorizationStatus.Auth}
             />
           }
           />
