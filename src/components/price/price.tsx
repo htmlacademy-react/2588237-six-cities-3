@@ -1,7 +1,11 @@
-function Price(): JSX.Element {
+type PriceProps = {
+  price: number;
+}
+
+function Price({price}: PriceProps): JSX.Element {
   return (
     <div className="offer__price">
-      <b className="offer__price-value">€120</b>
+      <b className="offer__price-value">€{price}</b>
       <span className="offer__price-text">&nbsp;night</span>
     </div>
   );

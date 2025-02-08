@@ -7,30 +7,39 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
+import { Offers } from '../../types/offer';
+import { fullOffers } from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
 
 type AppProps = {
   placesCount: number;
+  offers: Offers;
 }
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({placesCount, offers}: AppProps): JSX.Element {
+  const authorizationStatus = AuthorizationStatus.Auth;
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainPage placesCount={placesCount} />}/>
-          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route
+            path="/"
+            element={<MainPage placesCount={placesCount} offers={offers} isAuth={authorizationStatus === AuthorizationStatus.Auth} />}
+          />
+          <Route path={AppRoute.Login} element={<LoginPage isAuth={false} />} />
           <Route
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={authorizationStatus}
               >
-                <FavoritesPage />
+                <FavoritesPage offers={offers} isAuth={authorizationStatus === AuthorizationStatus.Auth} />
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Offer} element={<OfferPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path={AppRoute.Offer} element={<OfferPage offers={offers} fullOffers={fullOffers} reviews={reviews} />} />
+          <Route path="*" element={<NotFoundPage isAuth={authorizationStatus === AuthorizationStatus.Auth} />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
