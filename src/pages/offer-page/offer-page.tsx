@@ -1,20 +1,20 @@
 import { Helmet } from 'react-helmet-async';
-import Features from '../../components/features/features';
-import Gallery from '../../components/gallery/gallery';
+import Features from './components/features/features';
+import Gallery from './components/gallery/gallery';
 import PageHeader from '../../components/page-header/page-header';
-import Price from '../../components/price/price';
-import Rating from '../../components/rating/rating';
-import ReviewForm from '../../components/review-form/review-form';
+import Price from './components/price/price';
+import Rating from './components/rating/rating';
+import ReviewForm from './components/review-form/review-form';
 import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
-import HostUser from '../../components/host-user/host-user';
+import HostUser from './components/host-user/host-user';
 import { AllMockReviews } from '../../types/review';
 import { Page, SortType } from '../../const';
 import { getReviewsById, sortReviews } from '../../utils';
 import MyMap from '../../components/my-map/my-map';
 import NearPlaces from '../../components/near-places/near-places';
-import OfferInside from '../../components/offer-inside/offer-inside';
-import ReviewsList from '../../components/reviews-list/reviews-list';
+import OfferInside from './components/offer-inside/offer-inside';
+import ReviewsList from './components/reviews-list/reviews-list';
 
 type OfferPageProps = {
   offers: Offers;

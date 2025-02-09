@@ -1,5 +1,5 @@
-import { MAX_SHOW_REVIEWS } from '../../const';
-import { Reviews } from '../../types/review';
+import { MAX_SHOW_REVIEWS } from '../../../../const';
+import { Reviews } from '../../../../types/review';
 import ReviewsItem from '../reviews-item/reviews-item';
 
 type ReviewsListProps = {
