@@ -15,6 +15,8 @@ import MyMap from '../../components/my-map/my-map';
 import NearPlaces from '../../components/near-places/near-places';
 import OfferInside from './components/offer-inside/offer-inside';
 import ReviewsList from './components/reviews-list/reviews-list';
+import NotFoundPage from '../not-found-page/not-found-page';
+import { getOneOfferById } from './utils';
 
 type OfferPageProps = {
   offers: Offers;
@@ -23,16 +25,35 @@ type OfferPageProps = {
   isAuth: boolean;
 }
 
-function OfferPage({offers, fullOffers, reviews, isAuth}: OfferPageProps): JSX.Element {
+function OfferPage(props: OfferPageProps): JSX.Element {
+  const {offers, fullOffers, reviews, isAuth} = props;
+
   const {pathname} = useLocation();
 
   const urlId = pathname.replace('/offer/', '');
 
   /* OFFER DATA */
-  const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
-  const {images, title, isPremium, isFavorite, description, type, bedrooms, maxAdults, price, goods, host, rating} = fullOffer;
+  const oneOffer = getOneOfferById(fullOffers, urlId);
 
-  const city = fullOffer.city;
+  if (!oneOffer) {
+    return <NotFoundPage isAuth={isAuth} />;
+  }
+
+  const {
+    images,
+    title,
+    isPremium,
+    isFavorite,
+    description,
+    type,
+    bedrooms,
+    maxAdults,
+    price,
+    goods,
+    host,
+    rating,
+    city
+  } = oneOffer;
 
   /* REVIEWS DATA */
   const filteredReviews = sortReviews(getReviewsById(urlId, reviews), SortType.Down);
@@ -105,7 +126,7 @@ function OfferPage({offers, fullOffers, reviews, isAuth}: OfferPageProps): JSX.E
             </div>
           </div>
 
-          <MyMap city={city} points={offers} selectedPoint={fullOffer} page={Page.Offer} />
+          <MyMap city={city} points={offers} selectedPoint={oneOffer} page={Page.Offer} />
         </section>
 
         <NearPlaces offers={offers} />

@@ -33,7 +33,7 @@ function App({placesCount, offers}: AppProps): JSX.Element {
               />
             }
           />
-          <Route path={AppRoute.Login} element={<LoginPage isAuth={false} />} />
+          <Route path={AppRoute.Login} element={<LoginPage isAuth={authorizationStatus === AuthorizationStatus.Auth} />} />
           <Route
             path={AppRoute.Favorites}
             element={
