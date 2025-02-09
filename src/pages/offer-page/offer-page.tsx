@@ -100,7 +100,7 @@ function OfferPage({offers, fullOffers, reviews, isAuth}: OfferPageProps): JSX.E
 
                 {isShowReviews && <ReviewsList reviews={filteredReviews} />}
 
-                <ReviewForm />
+                {isAuth && <ReviewForm />}
               </section>
             </div>
           </div>

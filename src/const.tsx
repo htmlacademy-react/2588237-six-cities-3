@@ -42,3 +42,5 @@ export enum Page {
   Main = 'Main',
   Offer = 'Offer',
 }
+
+export const cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
