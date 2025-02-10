@@ -1,4 +1,4 @@
-function UserNav(): JSX.Element {
+function UserProfile(): JSX.Element {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -20,4 +20,4 @@ function UserNav(): JSX.Element {
   );
 }
 
-export default UserNav;
+export default UserProfile;
