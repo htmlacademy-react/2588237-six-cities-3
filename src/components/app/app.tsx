@@ -25,9 +25,15 @@ function App({placesCount, offers}: AppProps): JSX.Element {
         <Routes>
           <Route
             path="/"
-            element={<MainPage placesCount={placesCount} offers={offers} isAuth={authorizationStatus === AuthorizationStatus.Auth} />}
+            element={
+              <MainPage
+                placesCount={placesCount}
+                offers={offers}
+                isAuth={authorizationStatus === AuthorizationStatus.Auth}
+              />
+            }
           />
-          <Route path={AppRoute.Login} element={<LoginPage isAuth={false} />} />
+          <Route path={AppRoute.Login} element={<LoginPage isAuth={authorizationStatus === AuthorizationStatus.Auth} />} />
           <Route
             path={AppRoute.Favorites}
             element={
@@ -38,7 +44,15 @@ function App({placesCount, offers}: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Offer} element={<OfferPage offers={offers} fullOffers={fullOffers} reviews={reviews} />} />
+          <Route path={AppRoute.Offer} element={
+            <OfferPage
+              offers={offers}
+              fullOffers={fullOffers}
+              reviews={reviews}
+              isAuth={authorizationStatus === AuthorizationStatus.Auth}
+            />
+          }
+          />
           <Route path="*" element={<NotFoundPage isAuth={authorizationStatus === AuthorizationStatus.Auth} />} />
         </Routes>
       </BrowserRouter>

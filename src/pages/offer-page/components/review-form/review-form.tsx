@@ -2,33 +2,23 @@ import { ChangeEvent, useState } from 'react';
 import ReviewRating from '../review-rating/review-rating';
 
 function ReviewForm(): JSX.Element {
-  const [formData, setFormData] = useState({
-    review: '',
+  const [review, setReview] = useState({
+    comment: '',
     rating: 0,
   });
 
   const MAX_COMMENT_LENGTH = 300;
   const MIN_COMMENT_LENGTH = 50;
 
-  const isDisabled = formData.review.length < MIN_COMMENT_LENGTH || formData.review.length > MAX_COMMENT_LENGTH;
+  const isDisabledForm = review.rating < 1 || review.comment.length < MIN_COMMENT_LENGTH || review.comment.length > MAX_COMMENT_LENGTH;
 
-  const handleTextareaChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     evt.preventDefault();
 
     const {name, value} = evt.target;
 
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleInputRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    evt.preventDefault();
-
-    const {name, value} = evt.target;
-    setFormData({
-      ...formData,
+    setReview({
+      ...review,
       [name]: value,
     });
   };
@@ -41,15 +31,15 @@ function ReviewForm(): JSX.Element {
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
-      <ReviewRating onChange={handleInputRatingChange} />
+      <ReviewRating onChange={handleChange} />
 
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
-        name="review"
+        name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={formData.review}
-        onChange={handleTextareaChange}
+        value={review.comment}
+        onChange={handleChange}
       />
 
       <div className="reviews__button-wrapper">
@@ -57,7 +47,7 @@ function ReviewForm(): JSX.Element {
                   To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
 
-        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabledForm}>Submit</button>
       </div>
     </form>
   );

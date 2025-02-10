@@ -2,19 +2,19 @@ import { CardType } from '../../const';
 import { Offer } from '../../types/offer';
 import Card from '../card/card';
 
-type OfferCardProps = {
+type NearCardProps = {
   offer: Offer;
   onListItemHover?: (listItemName: string | undefined) => void;
 }
 
-function OfferCard({offer, onListItemHover}: OfferCardProps): JSX.Element {
+function NearCard({offer, onListItemHover}: NearCardProps): JSX.Element {
   return (
     <Card
       offer={offer}
-      cardType={CardType.Offer}
+      cardType={CardType.Near}
       onListItemHover={onListItemHover}
     />
   );
 }
 
-export default OfferCard;
+export default NearCard;

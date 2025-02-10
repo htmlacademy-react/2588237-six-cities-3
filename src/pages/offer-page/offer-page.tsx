@@ -1,35 +1,59 @@
 import { Helmet } from 'react-helmet-async';
-import AmenityList from '../../components/amenity-list/amenity-list';
-import Features from '../../components/features/features';
-import Gallery from '../../components/gallery/gallery';
+import Features from './components/features/features';
+import Gallery from './components/gallery/gallery';
 import PageHeader from '../../components/page-header/page-header';
-import Price from '../../components/price/price';
-import Rating from '../../components/rating/rating';
-import ReviewForm from '../../components/review-form/review-form';
-import ReviewsItem from '../../components/reviews-item/reviews-item';
+import Price from './components/price/price';
+import Rating from './components/rating/rating';
+import ReviewForm from './components/review-form/review-form';
 import { useLocation } from 'react-router-dom';
 import { FullOffers, Offers } from '../../types/offer';
-import OfferCard from '../../components/offer-card/offer-card';
-import HostUser from '../../components/host-user/host-user';
+import HostUser from './components/host-user/host-user';
 import { AllMockReviews } from '../../types/review';
-import { MAX_SHOW_REVIEWS, SortType } from '../../const';
+import { Page, SortType } from '../../const';
 import { getReviewsById, sortReviews } from '../../utils';
+import MyMap from '../../components/my-map/my-map';
+import NearPlaces from '../../components/near-places/near-places';
+import OfferInside from './components/offer-inside/offer-inside';
+import ReviewsList from './components/reviews-list/reviews-list';
+import NotFoundPage from '../not-found-page/not-found-page';
+import { getOneOfferById } from './utils';
 
 type OfferPageProps = {
   offers: Offers;
   fullOffers: FullOffers;
   reviews: AllMockReviews;
+  isAuth: boolean;
 }
 
-function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
-  const isAuth = true;
+function OfferPage(props: OfferPageProps): JSX.Element {
+  const {offers, fullOffers, reviews, isAuth} = props;
+
   const {pathname} = useLocation();
 
   const urlId = pathname.replace('/offer/', '');
 
   /* OFFER DATA */
-  const fullOffer = fullOffers.filter((item) => item.id === urlId)[0];
-  const {images, title, isPremium, isFavorite, description, type, bedrooms, maxAdults, price, goods, host, rating} = fullOffer;
+  const oneOffer = getOneOfferById(fullOffers, urlId);
+
+  if (!oneOffer) {
+    return <NotFoundPage isAuth={isAuth} />;
+  }
+
+  const {
+    images,
+    title,
+    isPremium,
+    isFavorite,
+    description,
+    type,
+    bedrooms,
+    maxAdults,
+    price,
+    goods,
+    host,
+    rating,
+    city
+  } = oneOffer;
 
   /* REVIEWS DATA */
   const filteredReviews = sortReviews(getReviewsById(urlId, reviews), SortType.Down);
@@ -49,9 +73,7 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
       <main className="page__main page__main--offer">
 
         <section className="offer">
-          <div className="offer__gallery-container container">
-            <Gallery images={images} />
-          </div>
+          <Gallery images={images} />
 
           <div className="offer__container container">
             <div className="offer__wrapper">
@@ -78,11 +100,7 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
 
               <Price price={price} />
 
-              <div className="offer__inside">
-                <h2 className="offer__inside-title">What&apos;s inside</h2>
-
-                <AmenityList goods={goods} />
-              </div>
+              <OfferInside goods={goods} />
 
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
@@ -97,32 +115,21 @@ function OfferPage({offers, fullOffers, reviews}: OfferPageProps): JSX.Element {
               </div>
 
               <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{filteredReviews.length}</span></h2>
-                {
-                  isShowReviews &&
-                    <ul className="reviews__list">
-                      {filteredReviews
-                        .slice(0, MAX_SHOW_REVIEWS)
-                        .map((review) => <ReviewsItem key={`review-${review.id}`} review={review} />)}
-                    </ul>
-                }
+                <h2 className="reviews__title">
+                  Reviews · <span className="reviews__amount">{filteredReviews.length}</span>
+                </h2>
 
-                <ReviewForm />
+                {isShowReviews && <ReviewsList reviews={filteredReviews} />}
+
+                {isAuth && <ReviewForm />}
               </section>
             </div>
           </div>
-          <section className="offer__map map" />
+
+          <MyMap city={city} points={offers} selectedPoint={oneOffer} page={Page.Offer} />
         </section>
 
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-
-            <div className="near-places__list places__list">
-              {offers.slice(0, 3).map((data) => <OfferCard key={data.id} offer={data} />)}
-            </div>
-          </section>
-        </div>
+        <NearPlaces offers={offers} />
       </main>
     </div>
   );

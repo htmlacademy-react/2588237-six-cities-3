@@ -1,11 +1,17 @@
+import { useLocation } from 'react-router-dom';
 import Logo from '../logo/logo';
 import UserProfile from '../user-profile/user-profile';
+import { shoudRenderUserProfile } from './utils';
 
 type PageHeaderProps = {
   isAuth: boolean;
 }
 
 function PageHeader({isAuth}: PageHeaderProps): JSX.Element {
+  const {pathname} = useLocation();
+
+  const shoudRender = shoudRenderUserProfile(pathname);
+
   return (
     <header className="header">
       <div className="container">
@@ -14,7 +20,7 @@ function PageHeader({isAuth}: PageHeaderProps): JSX.Element {
             <Logo />
           </div>
 
-          {isAuth && <UserProfile />}
+          {!shoudRender && <UserProfile isAuth={isAuth} />}
         </div>
       </div>
     </header>

@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import CityFilters from '../../components/city-filters/city-filters';
+import CityFilters from './components/city-filters/city-filters';
 import PageHeader from '../../components/page-header/page-header';
-import Sort from '../../components/sort/sort';
 import { Offers } from '../../types/offer';
-import OffersList from '../../components/offers-list/offers-list';
+import Content from './components/content/content';
 
 type MainPageProps = {
   placesCount: number;
@@ -12,6 +11,11 @@ type MainPageProps = {
 }
 
 function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
+  const city = offers[0].city;
+
+  const isEmpty = offers.length === 0;
+  const currentCity = 'Amsterdam';
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -20,28 +24,15 @@ function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
 
       {<PageHeader isAuth={isAuth} />}
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${isEmpty ? 'page__main--index-empty' : ''}`}>
         <h1 className="visually-hidden">Cities</h1>
 
         <div className="tabs">
-          {<CityFilters />}
+          {<CityFilters currentCity={currentCity} />}
         </div>
 
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
-
-              <Sort />
-
-              <OffersList offers={offers} />
-            </section>
-
-            <div className="cities__right-section">
-              <section className="cities__map map" />
-            </div>
-          </div>
+          <Content city={city} placesCount={placesCount} offers={offers} isEmpty={isEmpty} />
         </div>
       </main>
     </div>

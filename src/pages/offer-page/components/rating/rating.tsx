@@ -1,4 +1,4 @@
-import { getRating } from '../../utils';
+import { getRating } from '../../../../utils';
 
 type RatingProps = {
   rating: number;

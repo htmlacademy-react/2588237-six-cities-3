@@ -1,5 +1,10 @@
 export const MAX_SHOW_REVIEWS = 10;
 
+export const URL_MARKER_DEFAULT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const URL_MARKER_CURRENT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+
 export enum AppRoute {
   Root = '/',
   Login = '/login',
@@ -15,7 +20,8 @@ export enum AuthorizationStatus {
 
 export enum CardType {
   Favorite = 'favorites',
-  Offer = 'offer'
+  Offer = 'offer',
+  Near = 'near'
 }
 
 export enum City {
@@ -31,3 +37,10 @@ export enum SortType {
   Down = 'down',
   Up = 'up'
 }
+
+export enum Page {
+  Main = 'Main',
+  Offer = 'Offer',
+}
+
+export const cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];

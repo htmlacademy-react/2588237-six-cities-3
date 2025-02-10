@@ -1,5 +1,5 @@
-import { Review } from '../../types/review';
-import { getRating, humanizeDate } from '../../utils';
+import { Review } from '../../../../types/review';
+import { getRating, humanizeDate } from '../../../../utils';
 
 type ReviewsItemProps = {
   review: Review;

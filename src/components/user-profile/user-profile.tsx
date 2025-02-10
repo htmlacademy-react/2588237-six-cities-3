@@ -1,20 +1,25 @@
-function UserProfile(): JSX.Element {
+import SignInLink from './components/sign-in-link/sign-in-link';
+import SignOutLink from './components/sign-out-link/sign-out-link';
+import UserEmailLink from './components/user-email-link/user-email-link';
+
+type UserProfileProps = {
+  isAuth: boolean;
+}
+
+const UserSettings = {
+  email: 'Oliver.conner@gmail.com',
+  favoritesCount: 3,
+};
+
+function UserProfile({isAuth}: UserProfileProps): JSX.Element {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
-        <li className="header__nav-item user">
-          <a className="header__nav-link header__nav-link--profile" href="#">
-            <div className="header__avatar-wrapper user__avatar-wrapper">
-            </div>
-            <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-            <span className="header__favorite-count">3</span>
-          </a>
-        </li>
-        <li className="header__nav-item">
-          <a className="header__nav-link" href="#">
-            <span className="header__signout">Sign out</span>
-          </a>
-        </li>
+        {isAuth && <UserEmailLink email={UserSettings.email} favoritesCount={UserSettings.favoritesCount} />}
+
+        {!isAuth && <SignInLink />}
+
+        {isAuth && <SignOutLink />}
       </ul>
     </nav>
   );
