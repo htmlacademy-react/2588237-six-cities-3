@@ -1,3 +1,3 @@
-import { FullOffer, FullOffers } from '../../types/offer';
+import { TFullOffer, TFullOffers } from '../../types/offer';
 
-export const getOneOfferById = (offers: FullOffers, urlId: string): FullOffer => offers.filter((offer) => offer.id === urlId)[0];
+export const getOneOfferById = (offers: TFullOffers, urlId: string): TFullOffer => offers.filter((offer) => offer.id === urlId)[0];

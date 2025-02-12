@@ -7,16 +7,15 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { Offers } from '../../types/offer';
+import { TOffers } from '../../types/offer';
 import { fullOffers } from '../../mocks/offers';
 import { reviews } from '../../mocks/reviews';
 
 type AppProps = {
-  placesCount: number;
-  offers: Offers;
+  offers: TOffers;
 }
 
-function App({placesCount, offers}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   const authorizationStatus = AuthorizationStatus.Auth;
 
   return (
@@ -27,8 +26,6 @@ function App({placesCount, offers}: AppProps): JSX.Element {
             path="/"
             element={
               <MainPage
-                placesCount={placesCount}
-                offers={offers}
                 isAuth={authorizationStatus === AuthorizationStatus.Auth}
               />
             }

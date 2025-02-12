@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import MyMap from '../../../../components/my-map/my-map';
-import { City, Offer } from '../../../../types/offer';
+import { TOffer } from '../../../../types/offer';
 import { Page } from '../../../../const';
 import OffersEmpty from '../offers-empty/offers-empty';
 import Offers from '../offers/offers';
 
 type ContentProps = {
-  offers: Offer[];
+  offers: TOffer[];
   placesCount: number;
-  city: City;
   isEmpty: boolean;
 }
 
@@ -27,11 +26,11 @@ const getComponentSettings = (isEmpty: boolean) => {
   return {containerClassName, sectionClassName};
 };
 
-function Content({offers, placesCount, city, isEmpty}: ContentProps): JSX.Element {
-  const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
+function Content({offers, placesCount, isEmpty}: ContentProps): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<TOffer | undefined>(undefined);
 
   const handleListItemHover = (listItemName: string | undefined) => {
-    const currentPoint = offers.find((point: Offer) => point.id === listItemName);
+    const currentPoint = offers.find((point: TOffer) => point.id === listItemName);
 
     setSelectedPoint(currentPoint);
   };
@@ -46,7 +45,7 @@ function Content({offers, placesCount, city, isEmpty}: ContentProps): JSX.Elemen
       </section>
 
       <div className="cities__right-section">
-        {isEmpty || <MyMap city={city} points={offers} selectedPoint={selectedPoint} page={Page.Main} />}
+        {isEmpty || <MyMap points={offers} selectedPoint={selectedPoint} page={Page.Main} />}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import Price from './components/price/price';
 import Rating from './components/rating/rating';
 import ReviewForm from './components/review-form/review-form';
 import { useLocation } from 'react-router-dom';
-import { FullOffers, Offers } from '../../types/offer';
+import { TFullOffers, TOffers } from '../../types/offer';
 import HostUser from './components/host-user/host-user';
 import { AllMockReviews } from '../../types/review';
 import { Page, SortType } from '../../const';
@@ -19,8 +19,8 @@ import NotFoundPage from '../not-found-page/not-found-page';
 import { getOneOfferById } from './utils';
 
 type OfferPageProps = {
-  offers: Offers;
-  fullOffers: FullOffers;
+  offers: TOffers;
+  fullOffers: TFullOffers;
   reviews: AllMockReviews;
   isAuth: boolean;
 }
@@ -51,8 +51,7 @@ function OfferPage(props: OfferPageProps): JSX.Element {
     price,
     goods,
     host,
-    rating,
-    city
+    rating
   } = oneOffer;
 
   /* REVIEWS DATA */
@@ -126,7 +125,7 @@ function OfferPage(props: OfferPageProps): JSX.Element {
             </div>
           </div>
 
-          <MyMap city={city} points={offers} selectedPoint={oneOffer} page={Page.Offer} />
+          <MyMap points={offers} selectedPoint={oneOffer} page={Page.Offer} />
         </section>
 
         <NearPlaces offers={offers} />

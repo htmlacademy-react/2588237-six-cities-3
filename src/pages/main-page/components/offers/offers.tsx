@@ -1,9 +1,9 @@
 import OffersList from '../../../../components/offers-list/offers-list';
 import Sort from '../../../../components/sort/sort';
-import { Offer } from '../../../../types/offer';
+import { TOffer } from '../../../../types/offer';
 
 type OffersProps = {
-  offers: Offer[];
+  offers: TOffer[];
   placesCount: number;
   onListItemHover: (listItemName: string | undefined) => void;
 }

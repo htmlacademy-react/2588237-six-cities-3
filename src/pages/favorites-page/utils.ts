@@ -1,6 +1,6 @@
-import { Offers } from '../../types/offer';
+import { TOffers } from '../../types/offer';
 
-export const filterFavorites = (arr: Offers): Record<string, Offers> => {
+export const filterFavorites = (arr: TOffers): Record<string, TOffers> => {
   const result = arr.reduce((acc, item) => {
     if (item.isFavorite) {
       const cityName = item.city.name;
@@ -13,7 +13,7 @@ export const filterFavorites = (arr: Offers): Record<string, Offers> => {
     }
 
     return acc;
-  }, {} as Record<string, Offers>);
+  }, {} as Record<string, TOffers>);
 
   return result;
 };

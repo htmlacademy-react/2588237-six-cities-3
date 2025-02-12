@@ -1,8 +1,8 @@
-import { Offers } from '../../types/offer';
+import { TOffers } from '../../types/offer';
 import NearCard from '../near-card/near-card';
 
 type NearPlacesListProps = {
-  offers: Offers;
+  offers: TOffers;
 }
 
 const MAX_SHOW_CARDS = 3;

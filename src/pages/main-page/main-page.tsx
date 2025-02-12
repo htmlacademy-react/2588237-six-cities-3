@@ -1,20 +1,19 @@
 import { Helmet } from 'react-helmet-async';
 import CityFilters from './components/city-filters/city-filters';
 import PageHeader from '../../components/page-header/page-header';
-import { Offers } from '../../types/offer';
 import Content from './components/content/content';
+import { useAppSelector } from '../../hooks/store';
 
 type MainPageProps = {
-  placesCount: number;
-  offers: Offers;
   isAuth: boolean;
 }
 
-function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
-  const city = offers[0].city;
+function MainPage({isAuth}: MainPageProps): JSX.Element {
+
+  const currentCity = useAppSelector((state) => state.city);
+  const offers = useAppSelector((state) => state.offersByCity);
 
   const isEmpty = offers.length === 0;
-  const currentCity = 'Amsterdam';
 
   return (
     <div className="page page--gray page--main">
@@ -32,7 +31,7 @@ function MainPage({placesCount, offers, isAuth}: MainPageProps): JSX.Element {
         </div>
 
         <div className="cities">
-          <Content city={city} placesCount={placesCount} offers={offers} isEmpty={isEmpty} />
+          <Content placesCount={offers.length} offers={offers} isEmpty={isEmpty} />
         </div>
       </main>
     </div>
