@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { City, FullOffer, Offer, Offers } from '../../types/offer';
+import { TFullOffer, TOffer, TOffers } from '../../types/offer';
 import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import useMap from '../../hooks/use-map';
@@ -18,9 +18,8 @@ const currentCustomIcon = leaflet.icon({
 });
 
 type MapProps = {
-  city: City;
-  points: Offers;
-  selectedPoint: Offer | FullOffer | undefined;
+  points: TOffers;
+  selectedPoint: TOffer | TFullOffer | undefined;
   page: Page;
 }
 
@@ -38,7 +37,8 @@ const settings = {
 };
 
 function MyMap(props: MapProps): JSX.Element {
-  const {city, points, selectedPoint, page} = props;
+  const {points, selectedPoint, page} = props;
+  const city = points[0].city;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -47,6 +47,11 @@ function MyMap(props: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.setView(
+        [city.location.latitude, city.location.longitude],
+        city.location.zoom
+      );
+
       points.forEach((point): void => {
         leaflet
           .marker({
@@ -58,7 +63,7 @@ function MyMap(props: MapProps): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, selectedPoint, city]);
 
   return (
     <section

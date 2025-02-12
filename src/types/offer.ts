@@ -1,50 +1,50 @@
-export type Location = {
+export type TLocation = {
   latitude: number;
   longitude: number;
   zoom: number;
 }
 
-export type City = {
+export type TCity = {
     name: string;
-    location: Location;
+    location: TLocation;
 }
 
-export type Offer = {
+export type TOffer = {
   id: string;
   title: string;
   type: string;
   price: number;
-  city: City;
-  location: Location;
+  city: TCity;
+  location: TLocation;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
   previewImage: string;
 }
 
-export type HostUser = {
+export type THostUser = {
   name: string;
   avatarUrl: string;
   isPro: boolean;
 }
 
-export type FullOffer = {
+export type TFullOffer = {
   id: string;
   title: string;
   type: string;
   price: number;
-  city: City;
-  location: Location;
+  city: TCity;
+  location: TLocation;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
   description: string;
   bedrooms: number;
   goods: string[];
-  host: HostUser;
+  host: THostUser;
   images: string[];
   maxAdults: number;
 }
 
-export type Offers = Offer[];
-export type FullOffers = FullOffer[];
+export type TOffers = TOffer[];
+export type TFullOffers = TFullOffer[];

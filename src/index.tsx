@@ -9,13 +9,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const PLACES_COUNT = 312;
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App
-        placesCount={PLACES_COUNT}
         offers={offers}
       />
     </Provider>
