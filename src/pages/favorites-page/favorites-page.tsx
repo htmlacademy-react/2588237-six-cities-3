@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../components/page-header/page-header';
-import { Offers } from '../../types/offer';
+import { TOffers } from '../../types/offer';
 import { filterFavorites } from './utils';
 import FavoriteItem from '../../components/favorite-item/favorite-item';
 import PageFooter from '../../components/page-footer/page-footer';
 
 type FavoritesPageProps = {
-  offers: Offers;
+  offers: TOffers;
   isAuth: boolean;
 }
 

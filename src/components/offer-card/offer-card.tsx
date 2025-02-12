@@ -1,9 +1,9 @@
 import { CardType } from '../../const';
-import { Offer } from '../../types/offer';
+import { TOffer } from '../../types/offer';
 import Card from '../card/card';
 
 type OfferCardProps = {
-  offer: Offer;
+  offer: TOffer;
   onListItemHover?: (listItemName: string | undefined) => void;
 }
 

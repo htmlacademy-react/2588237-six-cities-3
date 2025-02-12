@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, CardType } from '../../const';
-import { Offer } from '../../types/offer';
+import { TOffer } from '../../types/offer';
 import { getRating } from '../../utils';
 import { MouseEvent } from 'react';
 
 type CardProps = {
-  offer: Offer;
+  offer: TOffer;
   cardType: string;
   onListItemHover?: (listItemName: string | undefined) => void;
 }

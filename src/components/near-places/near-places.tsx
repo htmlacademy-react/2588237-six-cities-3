@@ -1,8 +1,8 @@
-import { Offers } from '../../types/offer';
+import { TOffers } from '../../types/offer';
 import NearPlacesList from '../near-places-list/near-places-list';
 
 type NearPlacesProps = {
-  offers: Offers;
+  offers: TOffers;
 }
 
 function NearPlaces({offers}: NearPlacesProps): JSX.Element {

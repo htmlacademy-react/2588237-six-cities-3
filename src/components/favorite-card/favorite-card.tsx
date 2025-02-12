@@ -1,9 +1,9 @@
 import { CardType } from '../../const';
-import { Offer } from '../../types/offer';
+import { TOffer } from '../../types/offer';
 import Card from '../card/card';
 
 type FavoriteCardProps = {
-  offer: Offer;
+  offer: TOffer;
 }
 
 function FavoriteCard({offer}: FavoriteCardProps): JSX.Element {
